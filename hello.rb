@@ -1,7 +1,9 @@
+require_relative "my_car"
 def main
-    puts "Hello, WoRlD!"
+    
+
 end
 
-if __FILE__ == 0
+if __FILE__ == $0
 
 end
