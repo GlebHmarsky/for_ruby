@@ -36,7 +36,7 @@ def count_sign_for(array)
   counter = 0
   fSigh = 0
   array_of_switches = []
-  array.each do |i|
+  for i in array
     if i < 0 && fSigh == 0
       array_of_switches.push array.index i
       counter += 1
@@ -52,24 +52,21 @@ end
 
 def count_sign_interator(array)
   counter = 0
-  fSigh = 0
   array_of_switches = []
+  sign = array[0].positive?
+  cur = sign
   array.each do |i|
-    if i < 0 && fSigh == 0
-      array_of_switches.push array.index i
-      counter += 1
-      fSigh = 1
-    elsif i >= 0 && fSigh == 1
-      fSigh = 0
-      array_of_switches.push array.index i
-      counter += 1
+    cur = i.positive?
+    if(cur != sign)
+        sign = i.positive?
+        array_of_switches.push array.index i
+        counter+=1
     end
   end
   array_of_switches.unshift counter
 end
 
 def index_of_2_loop(array)
-  puts array[0]
   i = 1
   while i < array.size
     puts array[i]
@@ -83,7 +80,22 @@ def index_of_2_ind(array)
   end
 end
 
-def polynom_of_ind(array); end
+def polynom_of_loop(array,x)
+    sum = 0
+    for var in array
+        printf("index #{index} var #{var}\n sum: #{sum}\n")
+        sum += (x**(array.size - array.index(var) - 1)) * var
+    end
+    sum  
+end
+
+def polynom_of_ind(array, x)
+  sum = 0
+  array.each_with_index do |var, index|
+    sum += (x**(array.size - index - 1)) * var
+  end
+  sum
+end
 
 def main
   if ARGV.empty?
@@ -100,13 +112,15 @@ main.rb filename.txt\n")
   pp array_of_int
   printf "Первое значение кол-во смен знака, остальные - позиции смены знака\n"
 
-  array_1 = count_sign_for(array_of_int)
-  pp array_1
+  array1 = count_sign_for(array_of_int)
+  pp array1
 
-  array_2 = count_sign_interator(array_of_int)
-  pp array_2
+  array2 = count_sign_interator(array_of_int)
+  pp array2
 
-  # index_of_2_loop(array_of_int)
+   index_of_2_loop(array_of_int)
+
+  pp polynom_of_ind(array_of_int, 0)
 end
 
 main if __FILE__ == $PROGRAM_NAME
