@@ -37,7 +37,9 @@ def count_sign_for(array)
         if (i < 0 && fSigh == 0)
             array_of_switches.push array.index i
             counter += 1
+            fSigh =1
         elsif (i >= 0 && fSigh == 1)
+            fSigh =0
             array_of_switches.push array.index i
             counter += 1
         end
@@ -54,7 +56,9 @@ def count_sign_interator(array)
         if (i < 0 && fSigh == 0)
             array_of_switches.push array.index i
             counter += 1
+            fSigh =1
         elsif (i >= 0 && fSigh == 1)
+            fSigh = 0
             array_of_switches.push array.index i
             counter += 1
         end
@@ -63,13 +67,25 @@ def count_sign_interator(array)
     return array_of_switches.unshift counter
 end
 
-def index_of_2(array)
+def index_of_2_loop(array)
     puts array[0]
     i=1
     while i<array.size
         puts array[i]
         i*=2
     end    
+end
+
+def index_of_2_ind(array)
+    array.each_with_index {|var, index|
+        if index%2 == 0
+            printf var
+        end
+    }
+end
+
+def polynom_of_ind(array)
+    
 end
 
 def main
@@ -83,7 +99,8 @@ main.rb filename.txt\n")
     elsif ARGV.size > 1
         printf("Много аргументов")
     end
-    
+
+    printf "Первое значение кол-во смен знака, остальные - позиции смены знака\n"
     pp array_of_int
     array_1 = count_sign_for(array_of_int)
     pp array_1
@@ -91,7 +108,7 @@ main.rb filename.txt\n")
     array_2 = count_sign_interator(array_of_int)
     pp array_2
 
-    # index_of_2(array_of_int)
+    # index_of_2_loop(array_of_int)
 end
 
 if __FILE__ == $0
