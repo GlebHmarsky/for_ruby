@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'tty-prompt'
+
 # Fleet class
 class Fleet
   attr_reader :cars
@@ -10,6 +12,26 @@ class Fleet
   def add(new_car)
     cars.push(new_car)
   end
+
+  def integer?(str)
+    Integer(str) rescue false
+  end
+    
+  def load_from_stream
+    prompt = TTY::Prompt.new
+
+   
+    array_string = prompt.multiline("Type car: 
+    \rMark> Model> Yead> Benz>")
+    pp array_string
+    array_string.each do |s_car|
+      pp s_car
+      ar_car = s_car.split(" ")
+      next if(ar_car.size != 4)
+      next unless (year = integer? ar_car[2]) && (benz = integer?ar_car[3])
+      add(Car.new(ar_car[0], ar_car[1], year, benz)) 
+    end
+  end 
 
   def load_from_file(file)
     require 'json'
