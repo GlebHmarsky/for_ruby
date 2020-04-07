@@ -10,7 +10,7 @@ def main
   fleet = Fleet.new
   prompt = TTY::Prompt.new
   if(prompt.yes?("Do you wanna read from file?"))
-    fleet.load_from_file(__dir__ << '/../data/cars-list.json')
+    fleet.load_from_file(File.expand_path('../data/cars-list.json', __dir__))
   else 
 	 	fleet.load_from_stream
   end
