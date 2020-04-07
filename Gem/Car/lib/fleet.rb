@@ -19,8 +19,6 @@ class Fleet
     
   def load_from_stream
     prompt = TTY::Prompt.new
-
-   
     array_string = prompt.multiline("Type car: 
     \rMark> Model> Yead> Benz>")
     pp array_string
