@@ -22,4 +22,10 @@ class MovieList
     end
     movies
   end
+
+	def save_sorted_list(filename)
+		File.open(filename, "w+") do |row|
+			@movies.each {|el| row.puts(el)}
+		end
+	end
 end

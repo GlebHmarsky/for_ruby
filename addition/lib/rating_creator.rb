@@ -19,8 +19,8 @@ class RatingCreator
     end
     ml = MovieList.new
     ml.read_data pn.to_path
-    pp ml.movies
     ml.movies = ml.movies.sort
-    puts ml.movies
+		puts ml.movies
+		ml.save_sorted_list (File.expand_path('../data/sorted.csv', __dir__))
   end
 end
