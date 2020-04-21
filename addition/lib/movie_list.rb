@@ -4,6 +4,7 @@ require_relative 'movie'
 require 'csv'
 # MovieList class
 class MovieList
+  include Enumerable 
   attr_accessor :movies
   def initialize
     @movies = []
@@ -23,9 +24,17 @@ class MovieList
     movies
   end
 
-	def save_sorted_list(filename)
-		File.open(filename, "w+") do |row|
-			@movies.each {|el| row.puts(el)}
-		end
-	end
+  def save_sorted_list(filename)
+    File.open(filename, 'w+') do |row|
+      @movies.each { |el| row.puts(el) }
+    end
+  end
+
+  def min
+    movies.min
+  end
+
+  def max
+    movies.max
+  end
 end

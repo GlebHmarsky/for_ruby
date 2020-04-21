@@ -20,7 +20,13 @@ class RatingCreator
     ml = MovieList.new
     ml.read_data pn.to_path
     ml.movies = ml.movies.sort
-		puts ml.movies
-		ml.save_sorted_list (File.expand_path('../data/sorted.csv', __dir__))
+    puts ml.movies
+    ml.save_sorted_list File.expand_path('../data/sorted.csv', __dir__)
+    show_min_max(ml)
+  end
+
+  def show_min_max(ml)
+    puts ml.min
+    puts ml.max
   end
 end
