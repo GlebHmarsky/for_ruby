@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'comman_list'
+require_relative 'obj_list'
 
 require 'pathname'
 # require 'optparse'
