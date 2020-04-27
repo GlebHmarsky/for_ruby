@@ -7,17 +7,10 @@ rescue
 end
 
 def main
-  printf "Це калькуль, давай учиться считать вместе\n>"
-
-  num = sum = 0
-  while !num.nil? && num
-    if !(num = float?(gets))
-      next
-    end
-
-    pp num
-    sum += num
-    pp sum
+  if ![1,3,5].filter!{|n|n.even?}.empty?
+    pp "hi"
+  else 
+    pp 'goodbye'
   end
 end
 
