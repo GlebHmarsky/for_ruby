@@ -11,4 +11,4 @@ group :development do
   gem 'rubocop'
 end
 
-gem "wdm", "~> 0.1.1"
+gem 'wdm', '~> 0.1.1'

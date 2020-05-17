@@ -3714,7 +3714,7 @@ jQuery.extend( {
 		// Add list-specific methods
 		jQuery.each( tuples, function( i, tuple ) {
 			var list = tuple[ 2 ],
-				stateString = tuple[ 5 ];
+				statestring = tuple[ 5 ];
 
 			// promise.progress = list.add
 			// promise.done = list.add
@@ -3722,13 +3722,13 @@ jQuery.extend( {
 			promise[ tuple[ 1 ] ] = list.add;
 
 			// Handle state
-			if ( stateString ) {
+			if ( statestring ) {
 				list.add(
 					function() {
 
 						// state = "resolved" (i.e., fulfilled)
 						// state = "rejected"
-						state = stateString;
+						state = statestring;
 					},
 
 					// rejected_callbacks.disable
@@ -6246,7 +6246,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 
 	// Executing both pixelPosition & boxSizingReliable tests require only one layout
 	// so they're executed at the same time to save the second computation.
-	function computeStyleTests() {
+	function computestyletests() {
 
 		// This is a singleton, we need to execute it only once
 		if ( !div ) {
@@ -6312,23 +6312,23 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 
 	jQuery.extend( support, {
 		boxSizingReliable: function() {
-			computeStyleTests();
+			computestyletests();
 			return boxSizingReliableVal;
 		},
 		pixelBoxStyles: function() {
-			computeStyleTests();
+			computestyletests();
 			return pixelBoxStylesVal;
 		},
 		pixelPosition: function() {
-			computeStyleTests();
+			computestyletests();
 			return pixelPositionVal;
 		},
 		reliableMarginLeft: function() {
-			computeStyleTests();
+			computestyletests();
 			return reliableMarginLeftVal;
 		},
 		scrollboxSize: function() {
-			computeStyleTests();
+			computestyletests();
 			return scrollboxSizeVal;
 		}
 	} );
