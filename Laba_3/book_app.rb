@@ -27,7 +27,8 @@ class BookApp < Roda
     r.public if opts[:serve_static]
 
     r.root do
-      'Hello, world!'
+      # 'Hello, world!'
+      r.redirect('books')
     end
 
     r.on 'books' do
@@ -42,9 +43,9 @@ class BookApp < Roda
         end
 
         r.post do
-          @params = InputValidators.check_book(r.params['name'], r.params['date'], r.params['description'])
+          @params = InputValidators.check_book(r.params['date'], r.params['author'],  r.params['name'])
           if @params[:errors].empty?
-            opts[:books].add_book(book.new(@params[:name], @params[:date], @params[:description]))
+            opts[:books].add_book(Book.new(@params[:date], @params[:author], @params[:name]))
             r.redirect '/books'
           else
             view('new_book')
@@ -52,5 +53,13 @@ class BookApp < Roda
         end
       end
     end
+
+    r.on 'statistics' do
+      r.is do
+        @year_hash = opts[:books].get_hash
+        view("statistics")
+      end
+    end
+  
   end
 end

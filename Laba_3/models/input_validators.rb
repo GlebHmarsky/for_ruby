@@ -2,19 +2,7 @@
 
 # Validators for the incoming requests
 module InputValidators
-  def self.check_date_description(raw_date, raw_description)
-    date = raw_date || ''
-    description = raw_description || ''
-    errors = []
-    errors.concat(check_date_format(date)) unless date.empty?
-    {
-      date: date,
-      description: description,
-      errors: errors
-    }
-  end
-
-  def self.check_book(raw_name, raw_date, _raw_description)
+  def self.check_book(raw_date, raw_author, raw_name)
     date = raw_date || ''
     author = raw_author || ''
     name = raw_name || ''
@@ -32,7 +20,7 @@ module InputValidators
 
   def self.check_name(name)
     if name.empty?
-      ['Имя книги не может быть пустым']
+      ['Название книги не может быть пустым']
     else
       []
     end
@@ -55,11 +43,18 @@ module InputValidators
   end
 
   def self.check_date_format(date)
-    if /\d{4}-\d{2}-\d{2}/ =~ date
-      ['Дата должна существовать'] if !Date.parse(date).exist?
-      []
+    if (/\d{4}-\d{2}-\d{2}/ =~ date) 
+      split_date = date.split('-')
+      if Date.valid_date?(split_date[0].to_i, split_date[1].to_i, split_date[2].to_i)
+        if Date.today < Date.parse(date)
+          return ['Указанная дата находится в будущем'] 
+        end
+      else
+        return ['Дата должна существовать'] 
+      end
     else
-      ['Дата должна быть передана в формате ГГГГ-ММ-ДД']
+      return['Дата должна быть передана в формате ГГГГ-ММ-ДД'] 
     end
+    []
   end
 end
