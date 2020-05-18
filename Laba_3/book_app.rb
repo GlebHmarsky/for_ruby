@@ -16,11 +16,12 @@ class BookApp < Roda
 
   opts[:books] = BookList.new([
                                 Book.new('2020-04-05', 'Рей Бредбери', '451 по Фаренгейту'),
-                                Book.new('2019-07-20', 'Михаил Шолохов', 'Тихий Дон'),
-                                Book.new('2020-06-20', 'Островский', 'Гроза'),
-                                Book.new('2020-06-20', 'Островский', 'Гроза'),
-                                Book.new('2020-04-05', 'Рей Бредбери', '451 по Фаренгейту'),
-                                Book.new('2019-07-20', 'Михаил Шолохов', 'Тихий Дон')
+                                Book.new('2019-07-22', 'Михаил Шолохов', 'Судьба человека'),
+                                Book.new('2010-06-20', 'Островский', 'Гроза'),
+                                Book.new('2010-07-25', 'Островский', 'Снегурочка'),
+                                Book.new('2020-04-05', 'Рей Бредбери', 'Марсианские хроники'),
+                                Book.new('2019-07-2', 'Михаил Шолохов', 'Тихий Дон'),
+                                Book.new('2010-06-15', "Деннис О'Нейл", 'Темный рыцарь')
                               ])
 
   route do |r|
@@ -43,7 +44,7 @@ class BookApp < Roda
         end
 
         r.post do
-          @params = InputValidators.check_book(r.params['date'], r.params['author'],  r.params['name'])
+          @params = InputValidators.check_book(r.params['date'], r.params['author'], r.params['name'])
           if @params[:errors].empty?
             opts[:books].add_book(Book.new(@params[:date], @params[:author], @params[:name]))
             r.redirect '/books'
@@ -56,10 +57,15 @@ class BookApp < Roda
 
     r.on 'statistics' do
       r.is do
-        @year_hash = opts[:books].get_hash
-        view("statistics")
+        @year_hash = opts[:books].hash
+        view('statistics')
+      end
+      r.get String do |year|
+        @year_hash = opts[:books].hash
+        # pp @year_hash
+        @select_year = year
+        view('statistics')
       end
     end
-  
   end
 end

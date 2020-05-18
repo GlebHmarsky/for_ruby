@@ -19,7 +19,7 @@ module InputValidators
   end
 
   def self.check_name(name)
-    if name.empty?
+    if name.strip.empty?
       ['Название книги не может быть пустым']
     else
       []
@@ -27,7 +27,7 @@ module InputValidators
   end
 
   def self.check_author(author)
-    if author.empty?
+    if author.strip.empty?
       ['Имя автора не может быть пустым']
     else
       []
@@ -35,7 +35,7 @@ module InputValidators
   end
 
   def self.check_date(date)
-    if date.empty?
+    if date.strip.empty?
       ['Дата не может быть пустой']
     else
       []
@@ -43,18 +43,14 @@ module InputValidators
   end
 
   def self.check_date_format(date)
-    if (/\d{4}-\d{2}-\d{2}/ =~ date) 
-      split_date = date.split('-')
-      if Date.valid_date?(split_date[0].to_i, split_date[1].to_i, split_date[2].to_i)
-        if Date.today < Date.parse(date)
-          return ['Указанная дата находится в будущем'] 
-        end
-      else
-        return ['Дата должна существовать'] 
-      end
-    else
-      return['Дата должна быть передана в формате ГГГГ-ММ-ДД'] 
+    return ['Дата должна быть передана в формате ГГГГ-ММ-ДД'] unless /\d{4}-\d{2}-\d{2}/ =~ date
+
+    split_date = date.split('-')
+    unless Date.valid_date?(split_date[0].to_i, split_date[1].to_i, split_date[2].to_i)
+      return ['Дата должна существовать']
     end
+    return ['Указанная дата находится в будущем'] if Date.today < Date.parse(date)
+
     []
   end
 end
