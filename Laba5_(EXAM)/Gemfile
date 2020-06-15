@@ -1,0 +1,14 @@
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
+
+gem 'dry-schema'
+gem 'forme'
+gem 'roda'
+gem 'tilt'
+gem 'wdm', '~> 0.1.1'
+
+group :development do
+  gem 'rerun'
+  gem 'rubocop', '0.85.0'
+end

@@ -1,0 +1,32 @@
+<% form({ method: :post },{ obj: @parameters }) do |f| %>
+  <div class="grid-x grid-margin-x">
+    <div class="large-12 cell">
+      <%= f.input(:surname, type: :text, label: 'Фамилия', placeholder: '')%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:name, type: :text, label: 'Имя', placeholder: '')%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:patronymic, type: :text, label: 'Отчество (при наличии)', placeholder: '')%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:birth_date, type: :date, label: 'Дата рождения', placeholder: '1995-12-10')%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:education, type: :text, label: 'Образование', placeholder: 'Информационное')%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:specialty, type: :text, label: 'Специальность', placeholder: 'Программист на Ruby')%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:salary, type: :text, label: 'Желаемая зарплата (в рублях)', placeholder: '15000')%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:list_companies, type: :text, label: 'Список нежелательных компаний(через запятую)', placeholder: 'Тензор, РЖД')%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.button(value: form_type, class: 'button') %>
+      <a href="<%= back_location %>" class="button secondary">Отмена</a>
+    </div>
+  </div>
+<% end %>

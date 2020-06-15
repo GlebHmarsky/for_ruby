@@ -1,0 +1,56 @@
+---
+:seeker_list:
+- :id: 1
+  :surname: Thomas
+  :name: Dave
+  :patronymic: Odinson
+  :birth_date: 2013-06-18
+  :education: Полное
+  :specialty: 3.5
+  :salary: 34556
+  :list_companies: 
+- :id: 2
+  :surname: Thomas
+  :name: Andreyw
+  :patronymic: Hunt
+  :birth_date: 2000-04-29
+  :education: Полное
+  :specialty: 3.5
+  :salary: 456
+  :list_companies: 
+- :id: 3
+  :surname: Thomas
+  :name: Dave
+  :patronymic: Odinson
+  :birth_date: 2015-04-29
+  :education: Высшее
+  :specialty: 3.5
+  :salary: 2342
+  :list_companies: 
+- :id: 4
+  :surname: Хмарский
+  :name: Ну здарова
+  :patronymic: Владиславович
+  :birth_date: 5444-04-05
+  :education: Информационн
+  :specialty: Прогер
+  :salary: 6456456456
+  :list_companies: РЖД
+- :id: 5
+  :surname: Гаранин
+  :name: Глеб
+  :patronymic: Баракуда
+  :birth_date: 5465-06-04
+  :education: Информационое
+  :specialty: Тр
+  :salary: 4500
+  :list_companies: РЖД
+- :id: 6
+  :surname: Гагарин
+  :name: Андрей
+  :patronymic: Баракудавичь
+  :birth_date: 2000-01-01
+  :education: Информационн
+  :specialty: Теорема Руше
+  :salary: 5000
+  :list_companies: Тензор

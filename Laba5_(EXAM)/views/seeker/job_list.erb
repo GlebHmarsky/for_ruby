@@ -1,0 +1,40 @@
+<div class="grid-x grid-margin-x">
+  <div class="cell large-12">
+    <h3>Список работ для <%= @seeker.full_name%></h3>
+      <a href="<%= list_path %>" class="button">
+        К списку
+      </a>
+      <a href="#<%# back_location_path %>" class="button">
+        Назад
+      </a>
+    <div class="grid-x grid-margin-x">
+      <div class="cell large-12">
+        <a href="<%= seeker_new_path %>" class="button">
+          Добавить соискателя
+        </a>
+        <div class="grid-x grid-margin-x">
+          <% if @job_list.empty? %>
+            <div class="cell large-12 callout warning">
+              К сожалению, мы не нашли подходящей работы
+            </div>
+          <% else%>
+            <% @job_list.each do |vacancie| %>
+              <div class="card cell large-4">
+                <div class="card-divider">
+                  <%= vacancie.company %>
+                </div>
+                <div class="card-section">
+                  <p><%= vacancie.job_title %></p>
+                  <p><%= vacancie.salary %></p>
+                  <p>
+                    <a class="button" href="<%= path(vacancie) %>">Информация о вакансии</a>
+                  <p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

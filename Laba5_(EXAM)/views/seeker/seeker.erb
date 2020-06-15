@@ -1,0 +1,20 @@
+<div class="grid-x">
+  <div class="cell large-12">
+    <h3>Информация о соискателе</h3>
+
+    <p>Полное имя: <%= @seeker.full_name %></p>
+    <p>Дата рождения: <%= @seeker.birth_date %> (Полных лет: <%= @seeker.age %>)</p>
+    <p>Специальность: <%= @seeker.specialty %> </p>
+    <p>Образование: <%= @seeker.education %></p>    
+    <p>Желаемая зарплата: <%= @seeker.salary %></p>
+    <p>Список нежелательных компаний: <%= @seeker.list_companies %></p>
+
+    <a class="button" href="<%= path(@seeker, 'edit') %>">Редактировать</a>
+    <a class="button warning" href="<%= path(@seeker, 'delete') %>">Удалить</a>
+
+    <a class="button" href="<%= path(@seeker, 'job') %>">Найти работу</a>
+    <a class="button" href="<%= path(@seeker, 'dream_job') %>">Найти почти работу мечты</a>
+
+    <a class="button secondary" href="<%= list_path %>">Назад к списку</a>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="grid-x">
+  <div class="cell large-12">
+    <h3>Информация о вакансии</h3>
+
+    <p>Компания: <%= @vacancie.company %></p>
+    <p>Название должности: <%= @vacancie.job_title %></p>
+    <p>Подразделение: <%= @vacancie.department %> </p>
+    <p>Требующееся образование: <%= @vacancie.education %></p>
+    <p>Подходящий возраст: <%= @vacancie.min_age %>-<%= @vacancie.max_age %></p>
+    <p>Оклад: <%= @vacancie.salary %></p>
+    <p>Количество вакансии: <%= @vacancie.amount %></p>
+
+    <a class="button" href="<%= path(@vacancie, 'edit') %>">Редактировать</a>
+    <a class="button warning" href="<%= path(@vacancie, 'delete') %>">Удалить</a>
+    <a class="button secondary" href="<%= list_path %>">Назад к списку</a>
+  </div>
+</div>

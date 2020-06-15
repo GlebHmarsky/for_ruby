@@ -1,0 +1,41 @@
+<div class="large-6 cell">
+  <form method="get">
+      <a href="<%= list_path %>" class="button">
+       К списку
+      </a>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+      <table class="large-4 cell">
+      <thead>
+        <tr>
+          <th>Список уникальных должностей</th>
+        </tr>
+      </thead>
+        <tbody>
+          <% @list_unique_posts.each do | key, value | %>
+            <tr>
+              <td><a href="<%=unique_posts_path%>/<%= key %>"> <%= value[:post_name] %> </a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </form>
+</div>
+
+<% if @selected_post_id %>
+  <div class="large-12 cell callout" data-closable >
+    <p>Информация о должности <%= @list_unique_posts[@selected_post_id][:post_name] %></p>
+    <ul>
+      <% post_hash = @list_unique_posts[@selected_post_id]   %>
+      <li><%="Предложений:  #{post_hash[:amount]}" %></li>
+      <li><%="Средний оклад:  #{post_hash[:whoal_salary]/post_hash[:amount]}" %></li>
+      <li><%="Количество уникальных компаний:  #{post_hash[:unique_companies].size}" %></li>
+      <li><%="Список требующегося образования:  #{post_hash[:list_education]}" %></li>
+    </ul>
+    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>

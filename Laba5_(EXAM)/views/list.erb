@@ -1,0 +1,70 @@
+<div class="grid-x grid-margin-x">
+  <div class="cell large-12">
+    <h3>Список вакансий и соискателей</h3>
+      <a href="<%= unique_posts_path %>" class="button">
+        Список уникальных должностей
+      </a>
+      <a href="<%= age_statistics_path %>" class="button">
+        Стастистика зарплаты по возрасту
+      </a>
+    <div class="grid-x grid-margin-x">
+      <div class="cell large-6">
+        <a href="<%= vacancie_new_path %>" class="button">
+          Добавить вакансию
+        </a>
+        <div class="grid-x grid-margin-x">
+          <% if @vacancies.size == 0 %>
+            <div class="cell large-12 callout warning">
+              В приложении нет информации о вакансиях
+            </div>
+          <% else%>
+            <% @vacancies.each do |vacancie| %>
+              <div class="card cell large-6">
+                <div class="card-divider">
+                  <%= vacancie.company %>
+                </div>
+                <div class="card-section">
+                  <p><%= vacancie.job_title %></p>
+                  <p><%= vacancie.salary %></p>
+                  <p>
+                    <a class="button" href="<%= path(vacancie) %>">Информация о вакансии</a>
+                  <p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      
+      <%# Тут разделение на 2 части %>
+      
+      <div class="cell large-6">
+        <a href="<%= seeker_new_path %>" class="button">
+          Добавить соискателя
+        </a>
+        <div class="grid-x grid-margin-x">
+          <% if @seekers.size == 0 %>
+            <div class="cell large-12 callout warning">
+              В приложении нет информации о соискателях
+            </div>
+          <% else%>
+            <% @seekers.each do |seeker| %>
+              <div class="card cell large-6">
+                <div class="card-divider">
+                  <%= seeker.name_sp %>
+                </div>
+                <div class="card-section">
+                  <p><%= seeker.education %></p>
+                  <p><%= seeker.specialty %></p>
+                  <p>
+                    <a class="button" href="<%= path(seeker) %>">Информация о соискателе</a>
+                  <p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="grid-x grid-padding-x">
+  <div class="large-12 cell">
+    <h3>Список записей</h3>
+  </div>
+
+  <div class="large-12 cell">
+    <form method="get">
+      <div class="grid-x grid-padding-x">
+        <% unless @params[:errors].empty? %>
+          <div class="large-12 cell callout warning">
+            <p>
+              Параметры фильтра введены неверно, данные не были отфильтрованы
+            </p>
+            <ul>
+              <% @params[:errors].each do |error| %> 
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="large-6 cell">
+          <label>Формат (бумажная, электронная, аудио)
+            <input type="text" placeholder="бумажная" name="format" value="<%= @params[:format] %>">
+          </label>        
+        <div class="large-12 cell">
+          <input type="submit" value="Фильтровать" class="button">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="large-12 cell">
+    <a href="books/new" class="button">Добавить запись</a>
+    <a href="/statistics" class="button">Статистика</a>
+  </div>
+
+  <div class="large-12 cell">
+    <table>
+    <thead>
+      <tr>
+        <th>Дата прочтения</th>
+        <th>Автор "Название"</th>
+        <th>Оценка</th>
+        <th>Формат чтения</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @all_books.each do |book| %>
+        <tr>            
+          <td><%= book.date %></td>
+          <td><%= book.author %> "<%= book.name %>"</td>
+          <td><%= book.score %></td>
+          <td><%= book.format %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+  </div>
+</div>

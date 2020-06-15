@@ -1,0 +1,16 @@
+<div class="grid-x grid-margin-x">
+  <h3>Добавление соискателя</h3>
+</div>
+
+<% if @params && !@params[:errors].empty? %>
+  <div class="large-12 cell callout">
+    <p>При заполнении формы возникли ошибки</p>
+    <ul>
+      <% @params[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= render('vacancie/_vacancie_form', locals: {form_type: 'Добавить', back_location: list_path}) %>

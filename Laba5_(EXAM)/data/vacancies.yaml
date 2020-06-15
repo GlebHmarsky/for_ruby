@@ -1,0 +1,11 @@
+---
+:vacancie_list:
+- :id: 1
+  :company: Пепегавиль
+  :job_title: Программист
+  :department: Кадро
+  :salary: 5000
+  :min_age: 25
+  :max_age: 60
+  :education: Информационое
+  :amount: 2

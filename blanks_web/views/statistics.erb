@@ -1,0 +1,44 @@
+<div class="grid-x grid-padding-x">
+  <div class="large-12 cell">
+    <h3>Статистика</h3>
+  </div>
+
+  <div class="large-12 cell">
+    <a href="/" class="button">Все записи</a>
+    
+  </div>
+
+  <div class="large-12 cell">
+    <table>
+    <thead>
+    <%# (Нажмите чтобы выбрать) %>
+      <tr>
+        <th>Года</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @year_hash.each_key do |year| %>
+        <tr>            
+          <td><a href="/statistics/<%=year%>"><%=year%></a></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+    <% if @select_year  %>
+    <div class="large-12 cell callout">
+    <%=@select_year%>
+      <ul>
+        <% @year_hash[@select_year.to_i].each do |key, month| %>
+          <li>Месяц: <%= key %> (прочитано: <%= month.size %>)
+            <ul>
+              <% month.each do |book| %>
+                 <li><%= book.book_name %> </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+</div>
